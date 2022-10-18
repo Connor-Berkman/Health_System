@@ -356,20 +356,28 @@ namespace Health_System
         {
             if (dam < 0)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Error: you can't tak negative numbers.");
+                Console.ResetColor();
             }
             else if (pot < 0)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write("Error:You Can't heal negative health.");
+                Console.ResetColor();
             }
             else if (hel < 0)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Error: You can't pick up negative armour.");
+                Console.ResetColor();
             }
             else if (em < 0)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\n Error: You can't defeat negative enemies");
                 Console.WriteLine("and you can't earn negative exp.");
+                Console.ResetColor();
             }
         }
     }

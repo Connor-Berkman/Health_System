@@ -14,6 +14,7 @@ namespace Health_System
         static int lives;
         static int LeftOverDam;
         static int exp;
+        static int Lvl;
 
 
         static void Main(string[] args)
@@ -23,14 +24,17 @@ namespace Health_System
             armour = 50;
             lives = 3;
             exp = 0;
+            Lvl = 1;
 
-            showCaseDamage();
+            //showCaseDamage();
 
-            showCaseHealing();
+            //showCaseHealing();
 
-            showCaseIncreaseShield();
+            //showCaseIncreaseShield();
 
-            showGameOver();
+            //showGameOver();
+
+            //ShowCaseExpAndLv();
 
             Console.ReadKey(true);
         }
@@ -167,11 +171,36 @@ namespace Health_System
             showhud(score, health, lives);
         }
 
-        static void ShowCaseExp()
+        static void ShowCaseExpAndLv()
         {
             reset();
             Console.WriteLine();
             Console.WriteLine();
+            Console.WriteLine("Showing Exp gain and Lvl up");
+            Console.WriteLine();
+            Console.WriteLine();
+            showhud(score, health, lives);
+            Console.WriteLine();
+            defeatedEnemies(20);
+            Console.WriteLine();
+            showhud(score, health, lives);
+            Console.WriteLine();
+            defeatedEnemies(-5); // error checking
+            Console.WriteLine();
+            showhud(score, health, lives);
+            Console.WriteLine();
+            defeatedEnemies(80); //range checking
+            Console.WriteLine();
+            showhud(score, health, lives);
+            Console.WriteLine();
+            defeatedEnemies(200); // seeing if you can lvl up 2 times
+            Console.WriteLine();
+            showhud(score, health, lives);
+            Console.WriteLine();
+            defeatedEnemies(180); // seeing if lvl up 1 and have 80 exp show.
+            Console.WriteLine();
+            showhud(score, health, lives);
+
         }
 
         static void showhud(int Score, int hearts, int Lives)
@@ -181,7 +210,7 @@ namespace Health_System
             Console.WriteLine();
             Console.WriteLine("Health: " + hearts + "  Armour: " + armour);
 
-            Console.WriteLine("Exp: " + exp + "/100 ");
+            Console.WriteLine("Exp: " + exp + "/100   Lvl: " + Lvl);
             Console.WriteLine("-------------------------");
             Console.WriteLine();
             if (hearts == 100)
@@ -217,10 +246,7 @@ namespace Health_System
         {
             Console.WriteLine("You have taken " + damage + " damage from an enemy!");
 
-            if (damage < 0)
-            {
-                Console.WriteLine("Error: you can't take negative damage.");
-            }
+            ErrorMessage(damage, 0, 0, 0);
 
             if ((shield >= 0) && (damage >= 0))
             {
@@ -263,16 +289,15 @@ namespace Health_System
             health = 100;
             armour = 50;
             lives = 3;
+
+            Console.WriteLine("\n New Game...");
         }
 
         static void heal(int potion)
         {
-            Console.WriteLine("Error: You drank a potion that healed you for " + potion);
+            Console.WriteLine("You drank a potion that healed you for " + potion);
 
-            if (potion < 0)
-            {
-                Console.WriteLine("You can't heal negative health.");
-            }
+            ErrorMessage(0, potion, 0, 0);
 
             if ((potion >= 0) && (health >= 0))
             {
@@ -289,10 +314,7 @@ namespace Health_System
         {
             Console.WriteLine("You picked up a helmet you can take " + helmet + " more damage!");
 
-            if (helmet < 0)
-            {
-                Console.WriteLine("Error: You can't pick up negative armour.");
-            }
+            ErrorMessage(0, 0, helmet, 0);
 
             if ((helmet >= 0) && (armour >= 0))
             {
@@ -307,16 +329,49 @@ namespace Health_System
 
         static void defeatedEnemies(int enemies) // enemies are worth 1 exp
         {
-            Console.WriteLine("You defeated " + enemies + "enemies");
+            Console.WriteLine("You defeated " + enemies + " enemies");
             Console.WriteLine();
             Console.WriteLine("you gained " + enemies + " exp");
+
+            ErrorMessage(0, 0, 0, enemies);
 
             if (enemies > 0)
             {
                 exp = exp + enemies;
+
+                if (exp >= 100)
+                {
+                    while(exp >= 100)
+                    {
+                        exp = exp - 100;
+
+                        Lvl++;
+                    }
+                }
+
             }
         }
 
+        static void ErrorMessage(int dam, int pot, int hel, int em)
+        {
+            if (dam < 0)
+            {
+                Console.WriteLine("Error: you can't tak negative numbers.");
+            }
+            else if (pot < 0)
+            {
+                Console.Write("Error:You Can't heal negative health.");
+            }
+            else if (hel < 0)
+            {
+                Console.WriteLine("Error: You can't pick up negative armour.");
+            }
+            else if (em < 0)
+            {
+                Console.WriteLine("\n Error: You can't defeat negative enemies");
+                Console.WriteLine("and you can't earn negative exp.");
+            }
+        }
     }
 }
 

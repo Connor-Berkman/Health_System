@@ -26,15 +26,15 @@ namespace Health_System
             exp = 0;
             Lvl = 1;
 
-            //showCaseDamage();
+            showCaseDamage();
 
-            //showCaseHealing();
+            showCaseHealing();
 
-            //showCaseIncreaseShield();
+            showCaseIncreaseShield();
 
-            //showGameOver();
+            showGameOver();
 
-            //ShowCaseExpAndLv();
+            ShowCaseExpAndLv();
 
             
 
@@ -183,23 +183,23 @@ namespace Health_System
             Console.WriteLine();
             showhud();
             Console.WriteLine();
-            defeatedEnemies(20);
+            DefeatedEnemies(20);
             Console.WriteLine();
             showhud();
             Console.WriteLine();
-            defeatedEnemies(-5); // error checking
+            DefeatedEnemies(-5); // error checking
             Console.WriteLine();
             showhud();
             Console.WriteLine();
-            defeatedEnemies(80); //range checking
+            DefeatedEnemies(80); //range checking
             Console.WriteLine();
             showhud();
             Console.WriteLine();
-            defeatedEnemies(200); // seeing if you can lvl up 2 times
+            DefeatedEnemies(200); // seeing if you can lvl up 2 times
             Console.WriteLine();
             showhud();
             Console.WriteLine();
-            defeatedEnemies(180); // seeing if lvl up 1 and have 80 exp show.
+            DefeatedEnemies(180); // seeing if lvl up 1 and have 80 exp show.
             Console.WriteLine();
             showhud();
 
@@ -344,7 +344,7 @@ namespace Health_System
             }
         }
 
-        static void defeatedEnemies(int enemies) // enemies are worth 1 exp
+        static void DefeatedEnemies(int enemies) // enemies are worth 1 exp
         {
             if (enemies < 0)
             {

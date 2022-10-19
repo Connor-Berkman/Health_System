@@ -36,6 +36,8 @@ namespace Health_System
 
             //ShowCaseExpAndLv();
 
+            
+
             Console.ReadKey(true);
         }
 
@@ -49,23 +51,23 @@ namespace Health_System
             // and takes that left over damage to the health
             // if you go below 0 health you will go down a life
             // with all your health and shield goes back
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
-            takeDamage(20, health, armour);
+            takeDamage(20);
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
-            takeDamage(40, health, armour); //range checking
+            takeDamage(40); //range checking
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
-            takeDamage(-5, health, armour); // error checking
+            takeDamage(-5); // error checking
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
-            takeDamage(90, health, armour); // shows lives decreased
+            takeDamage(90); // shows lives decreased
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
         }
 
@@ -76,43 +78,43 @@ namespace Health_System
             Console.WriteLine();
             Console.WriteLine();
             reset();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
-            takeDamage(100, health, armour);
+            takeDamage(100);
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
             heal(30);
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
             Console.WriteLine();
             reset();  // reset for range checking
             Console.WriteLine("Reset for range checking.");
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
-            takeDamage(100, health, armour);
+            takeDamage(100);
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
             heal(100);
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
             Console.WriteLine();
             reset(); //reset for error checking
             Console.WriteLine("Reset for error checking.");
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
-            takeDamage(100, health, armour);
+            takeDamage(100);
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine(); 
             heal(-20);
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
         }
 
         static void showCaseIncreaseShield()
@@ -124,23 +126,23 @@ namespace Health_System
             Console.WriteLine("shield regen.");
             Console.WriteLine();
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
-            takeDamage(25, health, armour);
+            takeDamage(25);
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
             BluePickUp(50); // range checking
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
-            takeDamage(25, health, armour);
+            takeDamage(25);
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
             BluePickUp(-15); // error checking
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
         }
 
@@ -152,23 +154,23 @@ namespace Health_System
             Console.WriteLine("Show game over");
             Console.WriteLine();
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
-            takeDamage(200, health, armour); 
+            takeDamage(200); 
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
-            takeDamage(150, health, armour);
+            takeDamage(150);
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
-            takeDamage(150, health, armour);
+            takeDamage(150);
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
-            takeDamage(150, health, armour); // lives range checking
+            takeDamage(150); // lives range checking
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
         }
 
         static void ShowCaseExpAndLv()
@@ -179,53 +181,53 @@ namespace Health_System
             Console.WriteLine("Showing Exp gain and Lvl up");
             Console.WriteLine();
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
             defeatedEnemies(20);
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
             defeatedEnemies(-5); // error checking
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
             defeatedEnemies(80); //range checking
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
             defeatedEnemies(200); // seeing if you can lvl up 2 times
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
             Console.WriteLine();
             defeatedEnemies(180); // seeing if lvl up 1 and have 80 exp show.
             Console.WriteLine();
-            showhud(score, health, lives);
+            showhud();
 
         }
 
-        static void showhud(int Score, int hearts, int Lives)
+        static void showhud()
         {
             Console.WriteLine("-------------------------");
-            Console.WriteLine("Score: " + Score + "  Lives: " + Lives);
+            Console.WriteLine("Score: " + score + "  Lives: " + lives);
             Console.WriteLine();
-            Console.WriteLine("Health: " + hearts + "  Armour: " + armour);
+            Console.WriteLine("Health: " + health + "  Armour: " + armour);
 
             Console.WriteLine("Exp: " + exp + "/100   Lvl: " + Lvl);
             Console.WriteLine("-------------------------");
             Console.WriteLine();
-            if (hearts == 100)
+            if (health == 100)
             {
                 Console.WriteLine("I'm healthy!!!");
             }
-            else if ((hearts <= 99) && (hearts >= 80))
+            else if ((health <= 99) && (health >= 80))
             {
                 Console.WriteLine("I need sleep.");
             }
-            else if ((hearts <= 79) && (hearts >= 50))
+            else if ((health <= 79) && (health >= 50))
             {
                 Console.WriteLine("I need a doctor");
             }
-            else if ((hearts <= 49) && (hearts >= 1))
+            else if ((health <= 49) && (health >= 1))
             {
                 Console.WriteLine("HaHa I'm in danger.");
             }
@@ -233,7 +235,7 @@ namespace Health_System
             Console.WriteLine("-------------------------");
             
 
-            if ((Lives == 0) && (hearts == 0))
+            if ((lives == 0) && (health == 0))
             {
                 Console.WriteLine();
                 Console.WriteLine(" Game Over.");
@@ -242,23 +244,28 @@ namespace Health_System
             }
         }
 
-        static void takeDamage(int damage, int hp, int shield)
+        static void takeDamage(int damage)
         {
+            if (damage < 0)
+            {
+                ErrorMessage(damage, 0, 0, 0);
+
+                return;
+            }
+
             Console.WriteLine("You have taken " + damage + " damage from an enemy!");
 
-            ErrorMessage(damage, 0, 0, 0);
-
-            if ((shield >= 0) && (damage >= 0))
+            if ((armour >= 0) && (damage >= 0))
             {
-                armour = shield - damage;
+                LeftOverDam = armour - damage;
 
-                LeftOverDam = shield - damage;
+                armour = armour - damage;
 
                 if (armour < 0)
                 {
                     armour = 0;
 
-                    health = hp + LeftOverDam;
+                    health = health + LeftOverDam;
 
                     if (health < 0)
                     {
@@ -295,9 +302,14 @@ namespace Health_System
 
         static void heal(int potion)
         {
-            Console.WriteLine("You drank a potion that healed you for " + potion);
+            if (potion < 0)
+            {
+                ErrorMessage(0, potion, 0, 0);
 
-            ErrorMessage(0, potion, 0, 0);
+                return;
+            }
+
+            Console.WriteLine("You drank a potion that healed you for " + potion);
 
             if ((potion >= 0) && (health >= 0))
             {
@@ -312,9 +324,14 @@ namespace Health_System
 
         static void BluePickUp(int helmet)
         {
-            Console.WriteLine("You picked up a helmet you can take " + helmet + " more damage!");
+            if (helmet < 0)
+            {
+                ErrorMessage(0, 0, helmet, 0);
 
-            ErrorMessage(0, 0, helmet, 0);
+                return;
+            }
+
+            Console.WriteLine("You picked up a helmet you can take " + helmet + " more damage!");
 
             if ((helmet >= 0) && (armour >= 0))
             {
@@ -329,6 +346,13 @@ namespace Health_System
 
         static void defeatedEnemies(int enemies) // enemies are worth 1 exp
         {
+            if (enemies < 0)
+            {
+                ErrorMessage(0, 0, 0, enemies);
+
+                return;
+            }
+
             Console.WriteLine("You defeated " + enemies + " enemies");
             Console.WriteLine();
             Console.WriteLine("you gained " + enemies + " exp");
@@ -357,20 +381,26 @@ namespace Health_System
             if (dam < 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Error: you can't tak negative numbers.");
+                Console.WriteLine("Error: you can't take negative numbers.");
                 Console.ResetColor();
+
+                return;
             }
             else if (pot < 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write("Error:You Can't heal negative health.");
                 Console.ResetColor();
+
+                return;
             }
             else if (hel < 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Error: You can't pick up negative armour.");
                 Console.ResetColor();
+
+                return;
             }
             else if (em < 0)
             {
@@ -378,6 +408,8 @@ namespace Health_System
                 Console.WriteLine("\n Error: You can't defeat negative enemies");
                 Console.WriteLine("and you can't earn negative exp.");
                 Console.ResetColor();
+
+                return;
             }
         }
     }
